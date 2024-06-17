@@ -1,6 +1,6 @@
 # README
 
-<a href="https://rngwidgets.com/">demo</a>
+<a href="https://www.rngwidgets.com/">demo</a>
 
 A content management app for widget creation and display.
 
