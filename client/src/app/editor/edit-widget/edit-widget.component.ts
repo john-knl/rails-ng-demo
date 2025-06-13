@@ -18,6 +18,8 @@ import { Store } from '@ngrx/store';
 import { map, takeWhile } from 'rxjs/operators';
 import { Update } from '@ngrx/entity';
 import { CableActions } from '../../shared/state/editor-state';
+import { Papa } from 'ngx-papaparse';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-edit-widget',
@@ -36,7 +38,8 @@ export class EditWidgetComponent implements OnInit, OnDestroy {
     fb: FormBuilder,
     public snackBar: MatSnackBar,
     private store: Store<AppState>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private papa: Papa
   ) {
     this.form = fb.group({
       name: ['', Validators.required],
@@ -62,6 +65,79 @@ export class EditWidgetComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((action) => this.store.dispatch(action));
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    switch (file.type) {
+      case 'text/csv':
+        this.papa.parse(file, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            this.results.setValue(JSON.stringify(results.data));
+            this.snackBar.open('File parsed successfully!', 'Close', {
+              duration: 2000,
+            });
+          },
+          error: (error) => {
+            this.snackBar.open('Error parsing file: ' + error.message, 'Close', {
+              duration: 3000,
+            });
+          },
+        });
+        break;
+      case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+      case 'application/vnd.ms-excel': {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+          this.results.setValue(JSON.stringify(jsonData));
+          this.snackBar.open('File parsed successfully!', 'Close', {
+            duration: 2000,
+          });
+        };
+        reader.onerror = (error) => {
+          this.snackBar.open('Error reading XLSX file: ' + error, 'Close', {
+            duration: 3000,
+          });
+        };
+        reader.readAsArrayBuffer(file);
+        break;
+      }
+      case 'application/json': {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          try {
+            const jsonData = JSON.parse(e.target.result);
+            this.results.setValue(JSON.stringify(jsonData));
+            this.snackBar.open('File parsed successfully!', 'Close', {
+              duration: 2000,
+            });
+          } catch (error) {
+            this.snackBar.open('Error parsing JSON file: ' + error.message, 'Close', {
+              duration: 3000,
+            });
+          }
+        };
+        reader.onerror = (error) => {
+          this.snackBar.open('Error reading JSON file: ' + error, 'Close', {
+            duration: 3000,
+          });
+        };
+        reader.readAsText(file);
+        break;
+      }
+      default:
+        this.snackBar.open('Unsupported file type. Please upload CSV, XLSX, or JSON.', 'Close', {
+          duration: 3000,
+        });
+        break;
+    }
   }
 
   onSubmit(): void {

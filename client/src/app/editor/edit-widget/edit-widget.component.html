@@ -40,11 +40,21 @@
     <button mat-raised-button color="primary" type="submit">Update</button>
   </form>
 
+  <input type="file" class="file-input"
+        accept=".csv, .xlsx, .xls, .json"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload-container">
+  <button mat-raised-button color="primary" (click)="fileUpload.click()">
+    <mat-icon>attach_file</mat-icon> Parse File
+  </button>
+</div>
+
 <form class="form-container" (submit)="submitData()">
     <mat-form-field
     floatLabel="auto">
       <mat-label>Raw Data</mat-label>
       <textarea [formControl]="results" matInput></textarea>
   </mat-form-field>
-  <button mat-raised-button color="primary" type="submit">Enter Data</button>
+  <button mat-raised-button color="primary" type="submit">Submit Data</button>
 </form>
