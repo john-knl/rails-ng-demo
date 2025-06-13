@@ -29,7 +29,7 @@ export class CreateEffects {
         tap((res) =>
           this.router.navigate([
             '',
-            { outlets: { drawer: ['layouts', res.layout.id] } },
+            { outlets: { drawer: ['layout', res.layout.id] } },
           ])
         )
       ),
@@ -68,7 +68,7 @@ export class CreateEffects {
         tap((res) =>
           this.router.navigate([
             '',
-            { outlets: { drawer: ['grids', res.grid.id] } },
+            { outlets: { drawer: ['grid', res.grid.id] } },
           ])
         )
       ),
@@ -107,7 +107,7 @@ export class CreateEffects {
         tap((res) =>
           this.router.navigate([
             '',
-            { outlets: { drawer: ['widgets', res.widget.id] } },
+            { outlets: { drawer: ['widget', res.widget.id] } },
           ])
         )
       ),
