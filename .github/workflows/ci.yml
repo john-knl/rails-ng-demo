@@ -35,7 +35,7 @@ jobs:
       run: docker compose -f docker-compose.yml -f docker-compose.test.yml run --rm api rspec
 
     - name: Save failscreen
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: capybara-screens
