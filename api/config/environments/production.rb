@@ -4,6 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.hosts << ".rngwidgets.com"
+  config.hosts << ".onrender.com"
 
   config.host_authorization = {
     exclude: ->(request) { request.path =~ /health/ }
