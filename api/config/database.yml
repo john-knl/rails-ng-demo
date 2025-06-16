@@ -15,7 +15,6 @@
 # gem 'pg'
 #
 default: &default
-  host: db
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
@@ -26,6 +25,7 @@ default: &default
 
 development:
   <<: *default
+  host: db
   database: backend_development
   username: postgres
   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
@@ -60,6 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: db
   database: backend_test
   username: postgres
   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
