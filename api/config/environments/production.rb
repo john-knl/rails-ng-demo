@@ -47,7 +47,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   config.action_cable.mount_path = "/cable"
   config.action_cable.url = "wss://api.rngwidgets.com/cable"
-  config.action_cable.allowed_request_origins = ['https://www.rngwidgets.com']
+  config.action_cable.allowed_request_origins = ['https://www.rngwidgets.com', 'https://api.rngwidgets.com']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
