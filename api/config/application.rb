@@ -28,5 +28,9 @@ module Backend
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::RequestId
+    config.middleware.use ActionDispatch::RemoteIp
+    config.middleware.use Rack::Head
   end
 end
