@@ -28,5 +28,6 @@ module Backend
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
+    config.middleware.use ActionCable::Server::Middleware, ActionCable.server.config
   end
 end
