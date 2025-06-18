@@ -25,6 +25,7 @@ module Backend
     config.api_only = true
 
     # Add middleware needed for Action Cable (WebSockets) in API mode
+    config.middleware.use ActionCable.server
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
