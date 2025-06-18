@@ -19,11 +19,11 @@ COPY ./api/entrypoint.sh /usr/bin/
 
 WORKDIR /rails/
 
-ADD api/Gemfile* /rails/
+ADD api/ /rails/
 
 RUN bundle install
 
-ADD api/ /rails/
+RUN bundle exec rake assets:precompile
 
 COPY --from=build /build/public/ ./public/
 
