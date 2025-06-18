@@ -23,8 +23,6 @@ ADD api/ /rails/
 
 RUN bundle install
 
-RUN bundle exec rake assets:precompile
-
 COPY --from=build /build/public/ ./public/
 
 RUN chmod +x /usr/bin/entrypoint.sh
