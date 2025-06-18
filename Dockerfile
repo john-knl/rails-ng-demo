@@ -11,7 +11,7 @@ RUN gradle build --no-daemon --info --stacktrace
 FROM ruby:3.2.2 AS server
 
 ENV RAILS_ENV production
-ENV PORT=3000
+ENV PORT 10000
 
 RUN apt-get update -qq && apt-get install -y build-essential nodejs
 
@@ -19,7 +19,7 @@ COPY ./api/entrypoint.sh /usr/bin/
 
 WORKDIR /rails/
 
-ADD api/ /rails/
+COPY api/ /rails
 
 RUN bundle install
 
@@ -29,6 +29,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
 
-EXPOSE 3000
+EXPOSE 10000
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
