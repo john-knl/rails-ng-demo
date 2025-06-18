@@ -31,4 +31,4 @@ ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 3000
 
-CMD [ "bundle", "exec", "puma", "start", "-C", "config/puma.rb" ]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
