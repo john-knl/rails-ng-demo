@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+mount ActionCable.server => '/cable'
+
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
 
   constraints subdomain: 'api' do
     resources :widgets
