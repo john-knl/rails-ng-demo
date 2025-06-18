@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+mkdir -p tmp/pids
+
 bundle exec rails db:prepare
 
 bundle exec rails db:seed
