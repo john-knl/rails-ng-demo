@@ -76,7 +76,7 @@ RSpec.describe '/layouts', type: :request do
       it 'renders a JSON response with errors for the new layout' do
         post layouts_url,
              params: { layout: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end
@@ -110,7 +110,7 @@ RSpec.describe '/layouts', type: :request do
         layout = Layout.create! valid_attributes
         patch layout_url(layout),
               params: { layout: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end

@@ -20,7 +20,7 @@ class LayoutsController < ApplicationController
     if @layout.save
       render json: @layout, status: :created, location: @layout
     else
-      render json: @layout.errors, status: :unprocessable_entity
+      render json: @layout.errors, status: 422
     end
   end
 
@@ -29,7 +29,7 @@ class LayoutsController < ApplicationController
     if @layout.update(layout_params)
       render json: @layout
     else
-      render json: @layout.errors, status: :unprocessable_entity
+      render json: @layout.errors, status: 422
     end
   end
 

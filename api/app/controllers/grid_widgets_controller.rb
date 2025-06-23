@@ -20,7 +20,7 @@ class GridWidgetsController < ApplicationController
     if @grid_widget.save
       render json: @grid_widget, status: :created, location: @grid_widget
     else
-      render json: @grid_widget.errors, status: :unprocessable_entity
+      render json: @grid_widget.errors, status: 422
     end
   end
 
@@ -29,7 +29,7 @@ class GridWidgetsController < ApplicationController
     if @grid_widget.update(grid_widget_params)
       render json: @grid_widget
     else
-      render json: @grid_widget.errors, status: :unprocessable_entity
+      render json: @grid_widget.errors, status: 422
     end
   end
 

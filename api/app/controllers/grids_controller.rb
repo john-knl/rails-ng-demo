@@ -20,7 +20,7 @@ class GridsController < ApplicationController
     if @grid.save
       render json: @grid, status: :created, location: @grid
     else
-      render json: @grid.errors, status: :unprocessable_entity
+      render json: @grid.errors, status: 422
     end
   end
 
@@ -29,7 +29,7 @@ class GridsController < ApplicationController
     if @grid.update(grid_params)
       render json: @grid
     else
-      render json: @grid.errors, status: :unprocessable_entity
+      render json: @grid.errors, status: 422
     end
   end
 

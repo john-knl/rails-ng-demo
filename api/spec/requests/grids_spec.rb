@@ -84,7 +84,7 @@ RSpec.describe '/grids', type: :request do
       it 'renders a JSON response with errors for the new grid' do
         post grids_url,
              params: { grid: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end
@@ -123,7 +123,7 @@ RSpec.describe '/grids', type: :request do
         grid = Grid.create! valid_attributes
         patch grid_url(grid),
               params: { grid: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end

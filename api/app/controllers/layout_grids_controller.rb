@@ -20,7 +20,7 @@ class LayoutGridsController < ApplicationController
     if @layout_grid.save
       render json: @layout_grid, status: :created, location: @layout_grid
     else
-      render json: @layout_grid.errors, status: :unprocessable_entity
+      render json: @layout_grid.errors, status: 422
     end
   end
 
@@ -29,7 +29,7 @@ class LayoutGridsController < ApplicationController
     if @layout_grid.update(layout_grid_params)
       render json: @layout_grid
     else
-      render json: @layout_grid.errors, status: :unprocessable_entity
+      render json: @layout_grid.errors, status: 422
     end
   end
 

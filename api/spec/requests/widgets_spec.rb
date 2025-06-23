@@ -88,7 +88,7 @@ RSpec.describe '/widgets', type: :request do
       it 'renders a JSON response with errors for the new widget' do
         post widgets_url,
              params: { widget: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end
@@ -163,7 +163,7 @@ RSpec.describe '/widgets', type: :request do
         widget = Widget.create! valid_attributes
         patch widget_url(widget),
               params: { widget: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end

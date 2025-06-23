@@ -20,7 +20,7 @@ class WidgetsController < ApplicationController
     if @widget.save
       render json: @widget, status: :created, location: @widget
     else
-      render json: @widget.errors, status: :unprocessable_entity
+      render json: @widget.errors, status: 422
     end
   end
 
@@ -29,7 +29,7 @@ class WidgetsController < ApplicationController
     if @widget.update(widget_params)
       render json: @widget
     else
-      render json: @widget.errors, status: :unprocessable_entity
+      render json: @widget.errors, status: 422
     end
   end
 
