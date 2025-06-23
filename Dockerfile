@@ -19,9 +19,11 @@ COPY ./api/entrypoint.sh /usr/bin/
 
 WORKDIR /rails/
 
-COPY api/ /rails
+COPY api/Gemfile* /rails/
 
 RUN bundle install
+
+COPY api/ /rails
 
 COPY --from=build /build/public/ ./public/
 
