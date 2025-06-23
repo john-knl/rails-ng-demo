@@ -50,7 +50,7 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = [
     'https://www.rngwidgets.com',
     'https://api.rngwidgets.com',
-    'https://*.onrender.com',
+    /^https:\/\/.*\.onrender\.com$/,
   ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
