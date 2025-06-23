@@ -48,7 +48,7 @@ Rails.application.configure do
   config.action_cable.mount_path = "/cable"
   config.action_cable.url = "wss://api.rngwidgets.com/cable"
   config.action_cable.allowed_request_origins = [
-    /^https:\/\/.*\.rngwidgets\.com$/,
+    /^https:\/\/.*\.?rngwidgets\.com$/,
     /^https:\/\/.*\.onrender\.com$/,
   ]
 
