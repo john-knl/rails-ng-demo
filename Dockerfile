@@ -8,7 +8,7 @@ COPY ./client/ /build/
 
 RUN gradle build --no-daemon --info --stacktrace
 
-FROM ruby:3.2.2 AS server
+FROM ruby:3.4.4 AS server
 
 ENV RAILS_ENV production
 ENV PORT 10000
