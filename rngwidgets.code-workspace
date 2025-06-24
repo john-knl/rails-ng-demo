@@ -1,0 +1,33 @@
+{
+    "folders": [
+        {
+            "name": "rngwidgets",
+            "path": "."
+        },
+        {
+            "name": "api",
+            "path": "api"
+        },
+        {
+            "name": "client",
+            "path": "client"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.DS_Store": true,
+            "**/node_modules": true,
+            "**/dist": true,
+            "client": true,
+            "api": true
+        },
+        "solargraph.useBundler": true,
+        "solargraph.bundlerPath": "api/bin/bundle",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "javascript.validate.enable": false,
+        "typescript.validate.enable": false
+    }
+}
