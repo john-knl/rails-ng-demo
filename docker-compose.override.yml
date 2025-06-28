@@ -14,10 +14,8 @@ services:
   frontend:
     build:
       context: ./client
-      target: build
     ports:
-      - "4200:4200"
-    command: ng serve --host "0.0.0.0" --disable-host-check
+      - "4200:80"
     environment:
       - ENV=development
     labels:

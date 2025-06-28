@@ -16,36 +16,17 @@ import { LayoutResolver } from './layout.resolver';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  {
-    path: 'dash/:id',
-    component: DashComponent,
-    resolve: { resolver: LayoutResolver },
-  },
+  { path: 'dash/:id', component: DashComponent, resolve: { resolver: LayoutResolver } },
   { path: 'widgets', component: EditorWidgetComponent, outlet: 'drawer' },
   { path: 'new_widget', component: NewWidgetComponent, outlet: 'drawer' },
-  {
-    path: 'widget/:id',
-    component: EditWidgetComponent,
-    runGuardsAndResolvers: 'always',
-    outlet: 'drawer',
-  },
+  { path: 'widget/:id', component: EditWidgetComponent, runGuardsAndResolvers: 'always', outlet: 'drawer' },
   { path: 'grids', component: EditorGridComponent, outlet: 'drawer' },
   { path: 'new_grid', component: NewGridComponent, outlet: 'drawer' },
-  {
-    path: 'grid/:id',
-    component: EditGridComponent,
-    runGuardsAndResolvers: 'always',
-    outlet: 'drawer',
-  },
+  { path: 'grid/:id', component: EditGridComponent, runGuardsAndResolvers: 'always', outlet: 'drawer' },
   { path: 'layouts', component: EditorLayoutComponent, outlet: 'drawer' },
   { path: 'new_layout', component: NewLayoutComponent, outlet: 'drawer' },
-  {
-    path: 'layout/:id',
-    component: EditLayoutComponent,
-    resolve: { resolver: LayoutResolver },
-    runGuardsAndResolvers: 'always',
-    outlet: 'drawer',
-  },
+  { path: 'layout/:id', component: EditLayoutComponent, resolve: { resolver: LayoutResolver }, runGuardsAndResolvers: 'always', outlet: 'drawer' },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -57,4 +38,4 @@ const appRoutes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

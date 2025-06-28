@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, first, tap } from 'rxjs/operators';
@@ -11,16 +11,16 @@ import { LayoutActions, LayoutSelectors } from './shared/state/display-state';
   providedIn: 'root',
 })
 export class LayoutResolver implements Resolve<Layout> {
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) { }
 
-  resolve(): Observable<Layout> {
-    return this.store.pipe(select(LayoutSelectors.selectLayout),
-    tap((layout: Layout) => {
-      if (!layout.grids) {
-        this.store.dispatch(LayoutActions.fetchLayout({id: layout.id}))
-      }
-    }),
-    filter((layout: Layout) => !!layout),
-    first());
+  resolve(route: ActivatedRouteSnapshot): Observable<Layout> {
+    const id = Number(route.paramMap.get('id'));
+    this.store.dispatch(LayoutActions.fetchLayout({ id }));
+
+    return this.store.pipe(
+      select(LayoutSelectors.selectLayout),
+      filter((layout: Layout) => !!layout && layout.id === id && !!layout.grids),
+      first()
+    );
   }
 }

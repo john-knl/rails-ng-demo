@@ -1,12 +1,12 @@
 <mat-tab-group mat-align-tabs="center" [(selectedIndex)]="index">
-  <mat-tab *ngFor="let grid of grids$ | async; $">
-    <ng-template mat-tab-label
-      ><a [routerLink]="['', { outlets: { drawer: ['grids', grid.id] } }]">{{
-        grid.title
-      }}</a></ng-template
-    >
-    <ng-template matTabContent>
-      <app-grid [grid]="grid"></app-grid>
-    </ng-template>
-  </mat-tab>
+  <div *ngIf="layout?.grids">
+    <mat-tab *ngFor="let grid of grids$ | async; $">
+      <ng-template mat-tab-label><a [routerLink]="['', { outlets: { drawer: ['grids', grid.id] } }]">{{
+          grid.title
+          }}</a></ng-template>
+      <ng-template matTabContent>
+        <app-grid [grid]="grid"></app-grid>
+      </ng-template>
+    </mat-tab>
+  </div>
 </mat-tab-group>

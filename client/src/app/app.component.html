@@ -6,29 +6,14 @@
     <button name="home" mat-icon-button [routerLink]="['']">
       <mat-icon>home</mat-icon>
     </button>
-    <button
-      name="dashboard"
-      mat-icon-button
-      [matMenuTriggerFor]="dashboard"
-      (click)="getLayouts()"
-    >
+    <button name="dashboard" mat-icon-button [matMenuTriggerFor]="dashboard" (click)="getLayouts()">
       <mat-icon>dashboard</mat-icon>
     </button>
     <mat-menu id="dash-menu" #dashboard="matMenu" xPosition="before">
       <div *ngFor="let layout of layouts$ | async">
-        <button
-          id="dash-{{ layout.id }}"
-          mat-menu-item
-          [routerLink]="[
-            '',
-            {
-              outlets: {
-                drawer: ['layout', layout.id],
-                primary: ['dash', layout.id]
-              }
-            }
-          ]"
-        >
+        <button id="dash-{{ layout.id }}" mat-menu-item [routerLink]="[
+            { outlets: { primary: ['dash', layout.id], drawer: ['layout', layout.id] } }
+          ]">
           {{ layout.name }}
         </button>
       </div>
