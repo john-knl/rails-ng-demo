@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   end
 
   get '/health', to: 'health#index'
-  root to: redirect(Rails.root.to_s)
+  
+  get '*path', to: 'static#index', constraints: -> (req) do
+    !req.xhr? && req.format.html? 
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
