@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'frontend.localhost', 'rngwidgets.com'
+    origins 'frontend.localhost', 'rng.johnknl.ca'
 
     resource '*',
              headers: :any,

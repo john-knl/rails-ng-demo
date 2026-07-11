@@ -5,5 +5,5 @@ metadata:
   namespace: rng-widgets
 spec:
   domains:
-    - api.rngwidgets.com
-    - www.rngwidgets.com
+    - api.rng.johnknl.ca
+    - www.rng.johnknl.ca

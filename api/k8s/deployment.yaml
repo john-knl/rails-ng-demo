@@ -50,7 +50,7 @@ spec:
         - name: POSTGRES_PASSWORD
           value: postgres
         - name: REDIS_URL
-          value: "redis://api.rngwidgets.com/cable"
+          value: "redis://api.rng.johnknl.ca/cable"
         - name: DB_USER
           valueFrom:
             secretKeyRef:

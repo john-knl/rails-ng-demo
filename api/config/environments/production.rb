@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.hosts << ".rngwidgets.com"
+  config.hosts << ".rng.johnknl.ca"
   config.hosts << ".onrender.com"
 
   config.host_authorization = {
@@ -37,7 +37,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   config.action_cable.mount_path = "/cable"
-  config.action_cable.url = "wss://api.rngwidgets.com/cable"
+  config.action_cable.url = "wss://api.rng.johnknl.ca/cable"
   config.action_cable.allowed_request_origins = [
     /^https:\/\/.*\.?rngwidgets\.com$/,
     /^https:\/\/.*\.onrender\.com$/,

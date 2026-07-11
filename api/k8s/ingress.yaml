@@ -13,7 +13,7 @@ metadata:
     nginx.ingress.kubernetes.io/connection-proxy-header: keep-alive
 spec:
   rules:
-  - host: api.rngwidgets.com
+  - host: api.rng.johnknl.ca
     http:
       paths:
       - path: /cable
@@ -23,7 +23,7 @@ spec:
             name: redis
             port:
               number: 80
-  - host: api.rngwidgets.com
+  - host: api.rng.johnknl.ca
     http:
       paths:
       - path: /
@@ -33,7 +33,7 @@ spec:
             name: backend
             port:
               number: 80
-  - host: www.rngwidgets.com
+  - host: www.rng.johnknl.ca
     http:
       paths:
       - path: /
