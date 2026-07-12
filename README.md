@@ -1,6 +1,6 @@
 # README
 
-<a href="https:/rng.johnknl.ca/">demo</a>
+<a href="https://rng.johnknl.ca/">demo</a>
 
 A content management app for widget creation and display.
 
