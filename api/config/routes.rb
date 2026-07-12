@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
-  constraints subdomain: 'api' do
+  constraints subdomain: 'api.rng' do
     resources :widgets
     resources :grids
     resources :layouts
